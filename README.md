@@ -65,15 +65,16 @@ La solución organiza los scripts y artefactos correspondientes a las actividade
 
 ## 📷 Evidencias
 
-### 1. Datos base de clientes, productos y operaciones en SQL Server (`ComercialAndesDB.sql`)
-Consulta inicial de registros en las tablas de clientes (`ClienteID`, `NombreCompleto`, `Correo`, `EstadoActivo`), productos (`ProductoID`, `NombreProducto`, `PrecioUnitario`, `StockActual`) y operaciones (`OperacionID`, `ClienteID`, `ProductoID`, `Cantidad`, `TotalOperacion`, `FechaOperacion`):
 
-<img width="758" height="738" alt="Datos base de clientes, productos y operaciones en SQL Server" src="https://github.com/user-attachments/assets/a637e552-bc79-4b43-9072-8f1a56a1aafa" />
+
+<img width="991" height="597" alt="image" src="https://github.com/user-attachments/assets/1d87ea1c-1b74-4e97-a6f3-705d0d560edc" />
 
 ### 2. Pruebas de desencadenantes (`Query01-parte.sql` y `Query01-parte2.sql`) y tabla de auditoría
 Ejecución de operaciones (`INSERT`, `UPDATE`, `DELETE`) sobre `ProductoID = 3` (*Monitor 24 Pulgadas*) mostrando la actualización del `StockActual` y el registro automático en la tabla de auditoría (`TipoCambio`: `INSERT`, `UPDATE`, `DELETE`, `CantidadAnterior`, `CantidadNueva`, `DescripcionCambio`, `FechaCambio`):
+<img width="1443" height="538" alt="Captura de pantalla 2026-11-23 223537" src="https://github.com/user-attachments/assets/a94d4191-306a-4f17-a840-5973d9b30967" />
 
-<img width="212" height="95" alt="Pruebas de desencadenantes INSERT, UPDATE y DELETE con auditoría" src="https://github.com/user-attachments/assets/c6180bd1-61e3-4703-91be-b57004082a67" />
+<img width="686" height="395" alt="Captura de pantalla 2026-11-23 223544" src="https://github.com/user-attachments/assets/0b1664a9-0d55-4a29-90e2-c6bc0fd56dab" />
+
 
 > *Nota:* Agrega aquí las capturas o diagramas adicionales correspondientes a las **Actividades 2, 3 y 4** (funciones escalares y de tabla, ejecución de cursor vs. consulta basada en conjuntos, y pruebas de usuarios, roles y seguridad).
 
