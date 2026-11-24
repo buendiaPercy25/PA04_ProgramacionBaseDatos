@@ -1,18 +1,18 @@
 # PA4 - Programación Avanzada de Base de Datos
 
 ## 📌 Nombre del proyecto o evaluación
-- **Evaluación:** PA4 - Proceso de Aprendizaje 4[cite: 1, 2]
-- **Curso:** Programación Avanzada de Base de Datos (Código: `30627`)[cite: 1]
-- **Institución / Periodo / Corte:** ISIL | Periodo `202620` | Sesión 13 (Ponderación: 15%)[cite: 1, 2]
-- **Caso trabajado:** Gestión de clientes, productos y operaciones en una organización comercial (**ComercialAndesDB** / tienda tecnológica)[cite: 4, 8]
+- **Evaluación:** PA4 - Proceso de Aprendizaje 4
+- **Curso:** Programación Avanzada de Base de Datos (Código: `30627`)
+- **Institución / Periodo / Corte:** ISIL | Periodo `202620` | Sesión 13 (Ponderación: 15%)
+- **Caso trabajado:** Gestión de clientes, productos y operaciones en una organización comercial (**ComercialAndesDB** / tienda tecnológica)[cite: 8]
 
 ---
 
 ## 👥 Integrantes
-1. **Percy Astocahuana Buendía** — *Rol / Participación:* Gestión y diseño de la base de datos (`ComercialAndesDB.sql`) y desarrollo de la **Actividad 1** (`Query01-parte.sql` y `Query01-parte2.sql`: automatización mediante desencadenantes para `INSERT`, `UPDATE` y `DELETE` utilizando `inserted` y `deleted`, pruebas de modificación y auditoría)[cite: 2, 4, 7, 8]
-2. **Nelson Amado Del Portal Neyra** — *Rol / Participación:* [Completa su rol o participación en el proyecto y la exposición][cite: 2, 5]
-3. **Luis Ángel Chávez Quispe** — *Rol / Participación:* [Completa su rol o participación en el proyecto y la exposición][cite: 2, 5]
-4. **Diego Fernando Martinez del Carpio** — *Rol / Participación:* [Completa su rol o participación en el proyecto y la exposición][cite: 2, 5]
+1. **Percy Astocahuana Buendía** — *Rol / Participación:* Gestión y diseño de la base de datos (`ComercialAndesDB.sql`) y desarrollo de la **Actividad 1** (`Query01-parte.sql` y `Query01-parte2.sql`: automatización mediante desencadenantes para `INSERT`, `UPDATE` y `DELETE` utilizando `inserted` y `deleted`, pruebas de modificación y auditoría)[cite: 8]
+2. **Nelson Amado Del Portal Neyra** — *Rol / Participación:* [Completa su rol o participación en el proyecto y la exposición]
+3. **Luis Ángel Chávez Quispe** — *Rol / Participación:* [Completa su rol o participación en el proyecto y la exposición]
+4. **Diego Fernando Martinez del Carpio** — *Rol / Participación:* [Completa su rol o participación en el proyecto y la exposición]
 
 ---
 
@@ -55,10 +55,10 @@ La solución organiza los scripts y artefactos correspondientes a las actividade
 1. **Requisitos previos:** Contar con una instancia activa de **Microsoft SQL Server** y **SQL Server Management Studio (SSMS)** con permisos administrativos suficientes para crear objetos y gestionar seguridad durante las pruebas (sin utilizar credenciales reales o sensibles)[cite: 3, 4].
 2. **Preparar la base de datos:** Abrir SSMS y ejecutar el script `ComercialAndesDB.sql` para crear la base de datos, tablas y datos iniciales del caso[cite: 4, 6, 8].
 3. **Ejecutar las actividades en orden:**
-  1. Scripts de **Actividad 1**: ejecutar `Query01-parte.sql` y luego `Query01-parte2.sql` (desencadenantes `INSERT`, `UPDATE`, `DELETE` y pruebas de modificación)[cite: 4, 7, 8].
-  2. Script de **Actividad 2** (funciones escalares y de tipo tabla + consultas de consumo)[cite: 4].
-  3. Script de **Actividad 3** (cursor sencillo y alternativa basada en conjuntos)[cite: 4].
-  4. Script de **Actividad 4** (perfiles, autenticación, usuarios, roles, pruebas de acceso y documentación de claves/certificados)[cite: 4].
+   1. Scripts de **Actividad 1**: ejecutar `Query01-parte.sql` y luego `Query01-parte2.sql` (desencadenantes `INSERT`, `UPDATE`, `DELETE` y pruebas de modificación)[cite: 4, 7, 8].
+   2. Script de **Actividad 2** (funciones escalares y de tipo tabla + consultas de consumo)[cite: 4].
+   3. Script de **Actividad 3** (cursor sencillo y alternativa basada en conjuntos)[cite: 4].
+   4. Script de **Actividad 4** (perfiles, autenticación, usuarios, roles, pruebas de acceso y documentación de claves/certificados)[cite: 4].
 4. **Revisar evidencias:** Contrastar las salidas en las pestañas *Resultados* y *Mensajes* de SSMS con las capturas y comprobaciones registradas en el repositorio[cite: 3, 6, 7].
 
 ---
@@ -66,16 +66,16 @@ La solución organiza los scripts y artefactos correspondientes a las actividade
 ## 📷 Evidencias
 
 ### 1. Datos base de clientes, productos y operaciones en SQL Server (`ComercialAndesDB.sql`)
-Consulta inicial de registros en las tablas de clientes (`ClienteID`, `NombreCompleto`, `Correo`, `EstadoActivo`), productos (`ProductoID`, `NombreProducto`, `PrecioUnitario`, `StockActual`) y operaciones (`OperacionID`, `ClienteID`, `ProductoID`, `Cantidad`, `TotalOperacion`, `FechaOperacion`)[cite: 8, 9]:
+Consulta inicial de registros en las tablas de clientes (`ClienteID`, `NombreCompleto`, `Correo`, `EstadoActivo`), productos (`ProductoID`, `NombreProducto`, `PrecioUnitario`, `StockActual`) y operaciones (`OperacionID`, `ClienteID`, `ProductoID`, `Cantidad`, `TotalOperacion`, `FechaOperacion`)[cite: 6, 8]:
 
-![Captura de pantalla 2026-11-23 223544_2.png](Captura%20de%20pantalla%202026-11-23%20223544_2.png)[cite: 9]
+<img width="758" height="738" alt="Datos base de clientes, productos y operaciones en SQL Server" src="https://github.com/user-attachments/assets/a637e552-bc79-4b43-9072-8f1a56a1aafa" />
 
 ### 2. Pruebas de desencadenantes (`Query01-parte.sql` y `Query01-parte2.sql`) y tabla de auditoría
-Ejecución de operaciones (`INSERT`, `UPDATE`, `DELETE`) sobre `ProductoID = 3` (*Monitor 24 Pulgadas*) mostrando la actualización del `StockActual` y el registro automático en la tabla de auditoría (`TipoCambio`: `INSERT`, `UPDATE`, `DELETE`, `CantidadAnterior`, `CantidadNueva`, `DescripcionCambio`, `FechaCambio`)[cite: 8, 10]:
+Ejecución de operaciones (`INSERT`, `UPDATE`, `DELETE`) sobre `ProductoID = 3` (*Monitor 24 Pulgadas*) mostrando la actualización del `StockActual` y el registro automático en la tabla de auditoría (`TipoCambio`: `INSERT`, `UPDATE`, `DELETE`, `CantidadAnterior`, `CantidadNueva`, `DescripcionCambio`, `FechaCambio`)[cite: 7, 8]:
 
-![Captura de pantalla 2026-11-23 223537_2.png](Captura%20de%20pantalla%202026-11-23%20223537_2.png)[cite: 10]
+<img width="212" height="95" alt="Pruebas de desencadenantes INSERT, UPDATE y DELETE con auditoría" src="https://github.com/user-attachments/assets/c6180bd1-61e3-4703-91be-b57004082a67" />
 
-> *Nota:* Reemplaza las rutas locales (`Captura de pantalla 2026-11-23 223544_2.png` y `Captura de pantalla 2026-11-23 223537_2.png`) por la ruta exacta dentro de tu repositorio GitHub si subes las imágenes a una carpeta específica (por ejemplo, `evidencias/Captura de pantalla 2026-11-23 223544_2.png`), y agrega aquí las capturas o diagramas adicionales correspondientes a las **Actividades 2, 3 y 4**[cite: 3, 4, 5, 9, 10].
+> *Nota:* Agrega aquí las capturas o diagramas adicionales correspondientes a las **Actividades 2, 3 y 4** (funciones escalares y de tabla, ejecución de cursor vs. consulta basada en conjuntos, y pruebas de usuarios, roles y seguridad)[cite: 3, 4, 5].
 
 ---
 
@@ -88,4 +88,4 @@ Ejecución de operaciones (`INSERT`, `UPDATE`, `DELETE`) sobre `ProductoID = 3` 
 ---
 
 ## 🎥 Video de exposición
-Video público de YouTube: https://www.youtube.com/watch?v=yU1Ku83QVlw[cite: 3, 5]
+Video público de YouTube: https://www.youtube.com/watch?v=yU1Ku83QVlw
