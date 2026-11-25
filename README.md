@@ -76,7 +76,6 @@ Ejecución de operaciones (`INSERT`, `UPDATE`, `DELETE`) sobre `ProductoID = 3` 
 <img width="686" height="395" alt="Captura de pantalla 2026-11-23 223544" src="https://github.com/user-attachments/assets/0b1664a9-0d55-4a29-90e2-c6bc0fd56dab" />
 
 
-> *Nota:* Agrega aquí las capturas o diagramas adicionales correspondientes a las **Actividades 2, 3 y 4** (funciones escalares y de tabla, ejecución de cursor vs. consulta basada en conjuntos, y pruebas de usuarios, roles y seguridad).
 
 ---
 
