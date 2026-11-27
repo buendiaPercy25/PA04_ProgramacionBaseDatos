@@ -1,0 +1,257 @@
+/* =====================================================
+   PA4 - ACTIVIDAD 4
+   AUTENTICACION, USUARIOS, ROLES Y SEGURIDAD
+   BASE DE DATOS: ComercialAndesDB
+   ===================================================== */
+
+
+/* =====================================================
+   1. CREACION DE LOGINS
+   ===================================================== */
+
+USE master;
+GO
+
+IF NOT EXISTS (
+    SELECT 1
+    FROM sys.server_principals
+    WHERE name = 'LoginConsulta'
+)
+BEGIN
+    CREATE LOGIN LoginConsulta
+    WITH PASSWORD = 'Consulta_Andes2026!',
+    CHECK_POLICY = ON;
+END;
+GO
+
+IF NOT EXISTS (
+    SELECT 1
+    FROM sys.server_principals
+    WHERE name = 'LoginVentas'
+)
+BEGIN
+    CREATE LOGIN LoginVentas
+    WITH PASSWORD = 'Ventas_Andes2026!',
+    CHECK_POLICY = ON;
+END;
+GO
+
+
+/* =====================================================
+   2. SELECCIONAR BASE DE DATOS
+   ===================================================== */
+
+USE ComercialAndesDB;
+GO
+
+
+/* =====================================================
+   3. CREACION DE USUARIOS
+   ===================================================== */
+
+IF NOT EXISTS (
+    SELECT 1
+    FROM sys.database_principals
+    WHERE name = 'UsuarioConsulta'
+)
+BEGIN
+    CREATE USER UsuarioConsulta
+    FOR LOGIN LoginConsulta;
+END;
+GO
+
+IF NOT EXISTS (
+    SELECT 1
+    FROM sys.database_principals
+    WHERE name = 'UsuarioVentas'
+)
+BEGIN
+    CREATE USER UsuarioVentas
+    FOR LOGIN LoginVentas;
+END;
+GO
+
+
+/* =====================================================
+   4. CREACION DE ROLES
+   ===================================================== */
+
+IF NOT EXISTS (
+    SELECT 1
+    FROM sys.database_principals
+    WHERE name = 'RolConsulta'
+)
+BEGIN
+    CREATE ROLE RolConsulta;
+END;
+GO
+
+IF NOT EXISTS (
+    SELECT 1
+    FROM sys.database_principals
+    WHERE name = 'RolVentas'
+)
+BEGIN
+    CREATE ROLE RolVentas;
+END;
+GO
+
+
+/* =====================================================
+   5. ASIGNACION DE USUARIOS A ROLES
+   ===================================================== */
+
+IF NOT EXISTS (
+    SELECT 1
+    FROM sys.database_role_members rm
+    INNER JOIN sys.database_principals r
+        ON rm.role_principal_id = r.principal_id
+    INNER JOIN sys.database_principals u
+        ON rm.member_principal_id = u.principal_id
+    WHERE r.name = 'RolConsulta'
+    AND u.name = 'UsuarioConsulta'
+)
+BEGIN
+    ALTER ROLE RolConsulta
+    ADD MEMBER UsuarioConsulta;
+END;
+GO
+
+IF NOT EXISTS (
+    SELECT 1
+    FROM sys.database_role_members rm
+    INNER JOIN sys.database_principals r
+        ON rm.role_principal_id = r.principal_id
+    INNER JOIN sys.database_principals u
+        ON rm.member_principal_id = u.principal_id
+    WHERE r.name = 'RolVentas'
+    AND u.name = 'UsuarioVentas'
+)
+BEGIN
+    ALTER ROLE RolVentas
+    ADD MEMBER UsuarioVentas;
+END;
+GO
+
+
+/* =====================================================
+   6. PERMISOS DEL ROL DE CONSULTA
+   ===================================================== */
+
+GRANT SELECT ON SCHEMA::dbo
+TO RolConsulta;
+GO
+
+
+/* =====================================================
+   7. PERMISOS DEL ROL DE VENTAS
+   ===================================================== */
+
+-- Consultar clientes
+
+GRANT SELECT ON OBJECT::dbo.Clientes
+TO RolVentas;
+GO
+
+-- Consultar productos
+
+GRANT SELECT ON OBJECT::dbo.Productos
+TO RolVentas;
+GO
+
+-- Consultar operaciones
+
+GRANT SELECT ON OBJECT::dbo.Operaciones
+TO RolVentas;
+GO
+
+-- Registrar nuevas operaciones
+
+GRANT INSERT ON OBJECT::dbo.Operaciones
+TO RolVentas;
+GO
+
+
+/* =====================================================
+   8. VALIDACION DEL USUARIO DE CONSULTA
+   ===================================================== */
+
+EXECUTE AS USER = 'UsuarioConsulta';
+
+SELECT
+    USER_NAME() AS UsuarioActual,
+
+    HAS_PERMS_BY_NAME(
+        'dbo.Clientes',
+        'OBJECT',
+        'SELECT'
+    ) AS PuedeConsultarClientes,
+
+    HAS_PERMS_BY_NAME(
+        'dbo.Clientes',
+        'OBJECT',
+        'INSERT'
+    ) AS PuedeRegistrarClientes,
+
+    HAS_PERMS_BY_NAME(
+        'dbo.Productos',
+        'OBJECT',
+        'SELECT'
+    ) AS PuedeConsultarProductos;
+
+REVERT;
+GO
+
+
+/* =====================================================
+   9. VALIDACION DEL USUARIO DE VENTAS
+   ===================================================== */
+
+EXECUTE AS USER = 'UsuarioVentas';
+
+SELECT
+    USER_NAME() AS UsuarioActual,
+
+    HAS_PERMS_BY_NAME(
+        'dbo.Clientes',
+        'OBJECT',
+        'SELECT'
+    ) AS PuedeConsultarClientes,
+
+    HAS_PERMS_BY_NAME(
+        'dbo.Productos',
+        'OBJECT',
+        'SELECT'
+    ) AS PuedeConsultarProductos,
+
+    HAS_PERMS_BY_NAME(
+        'dbo.Operaciones',
+        'OBJECT',
+        'INSERT'
+    ) AS PuedeRegistrarOperaciones,
+
+    HAS_PERMS_BY_NAME(
+        'dbo.Clientes',
+        'OBJECT',
+        'DELETE'
+    ) AS PuedeEliminarClientes;
+
+REVERT;
+GO
+
+
+/* =====================================================
+   10. VISUALIZAR USUARIOS Y ROLES CREADOS
+   ===================================================== */
+
+SELECT
+    dp.name AS Usuario,
+    dp.type_desc AS TipoUsuario,
+    rp.name AS Rol
+FROM sys.database_role_members rm
+INNER JOIN sys.database_principals rp
+    ON rm.role_principal_id = rp.principal_id
+INNER JOIN sys.database_principals dp
+    ON rm.member_principal_id = dp.principal_id
+WHERE dp.name IN ('UsuarioConsulta', 'UsuarioVentas');
+GO
