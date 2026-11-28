@@ -13,7 +13,7 @@
 2. **Nelson Amado Del Portal Neyra** — *Rol / Participación:* [Completa su rol o participación en el proyecto y la exposición]
 3. **Luis Ángel Chávez Quispe** — *Rol / Participación:* [Completa su rol o participación en el proyecto y la exposición]
 4. **Diego Fernando Martinez del Carpio** — *Rol / Participación:* Desarrollo de la **Actividad 2** (`Actividad2_Funciones.sql`: implementación de función escalar y función de tipo tabla en línea, consultas de consumo, pruebas de verificación y comparación funcional).
-5. **Gerson Alberto Pinto Leguia** — *Rol / Participación:* [Completa su rol o participación en el proyecto y la exposición]
+5. **Gerson Alberto Pinto Leguia** — *Rol / Participación:* [Se encargó de realizar el video para la Actividad 3 y subir el video a YouTube ]
 ---
 
 ## 📝 Descripción
