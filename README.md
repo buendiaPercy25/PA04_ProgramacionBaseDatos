@@ -10,8 +10,8 @@
 
 ## 👥 Integrantes
 1. **Percy Astocahuana Buendía** — *Rol / Participación:* Gestión y diseño de la base de datos (`ComercialAndesDB.sql`) y desarrollo de la **Actividad 1** (`Query01-parte.sql` y `Query01-parte2.sql`: automatización mediante desencadenantes para `INSERT`, `UPDATE` y `DELETE` utilizando `inserted` y `deleted`, pruebas de modificación y auditoría)
-2. **Nelson Amado Del Portal Neyra** — *Rol / Participación:* Desarrollador de la **Actividad 4** Activdad 04 autenticación, creación de usuarios, roles y seguridad.sql
-3. **Luis Ángel Chávez Quispe** — *Rol / Participación:* Se encargo de realizar la **Actividad 3** Cursor y evaluación crítica de alternativas 
+2. **Nelson Amado Del Portal Neyra** — *Rol / Participación:* Desarrollador de la **Actividad 4** (`Activdad 04 autenticación, creación de usuarios, roles y seguridad.sql`)
+3. **Luis Ángel Chávez Quispe** — *Rol / Participación:* Se encargo de realizar la **Actividad 3** ( `Actividad 3 Cursor.sql`: Cursor y evaluación crítica de alternativas) 
 4. **Diego Fernando Martinez del Carpio** — *Rol / Participación:* Desarrollo de la **Actividad 2** (`Actividad2_Funciones.sql`: implementación de función escalar y función de tipo tabla en línea, consultas de consumo, pruebas de verificación y comparación funcional).
 5. **Gerson Alberto Pinto Leguia** — *Rol / Participación:* Se encargó de realizar el video para la Actividad 3 y subir el video a YouTube
 ---
@@ -112,4 +112,4 @@ Ejecución de operaciones (`INSERT`, `UPDATE`, `DELETE`) sobre `ProductoID = 3` 
 ---
 
 ## 🎥 Video de exposición
-Video público de YouTube:
+Video público de YouTube: https://www.youtube.com/watch?v=jMlFv3cLCV4
